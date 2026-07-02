@@ -1,0 +1,16 @@
+product:
+  type: kmp/lib
+  platforms: [ jvm ]
+
+dependencies:
+  - $libs.kotlinx.io.core
+
+settings:
+  kotlin:
+    version: 2.4.0
+    freeCompilerArgs:
+      - -Xexpect-actual-classes
+      - -Xcollection-literals
+
+test-dependencies@jvm:
+  - $libs.junit.juniper.params

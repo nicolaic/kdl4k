@@ -1,0 +1,23 @@
+name: Build Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Setup Kotlin toolchain
+        env:
+          KOTLIN_CLI_NO_WELCOME_BANNER: "1"
+        run: ./kotlin --version
+      - name: Build Kdl4K sources
+        run: ./kotlin build
+      - name: Run Kdl4K test suites
+        run: ./kotlin test
